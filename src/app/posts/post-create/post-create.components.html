@@ -1,14 +1,49 @@
 <!-- <textarea rows="6" [value]="'test'" #postInput> </textarea> -->
+<!-- <mat-card>
+   
+    <mat-form-field>
+      <input matInput type="text" name="" [(ngModel)]="enteredTitle" />
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput rows="6" [(ngModel)]="enteredContent"> </textarea>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" (click)="onAddPost()">
+        Save Post
+      </button>
+    </div>
+  
+</mat-card> -->
+
 <mat-card>
-  <mat-form-field>
-    <input matInput type="text" name="" [(ngModel)]="enteredTitle" />
-  </mat-form-field>
-  <mat-form-field>
-    <textarea matInput rows="6" [(ngModel)]="enteredContent"> </textarea>
-  </mat-form-field>
-  <div>
-    <button mat-raised-button color="primary" (click)="onAddPost()">
-      Save Post
-    </button>
-  </div>
+  <form action="" (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        required
+        minlength="3"
+        ngModel
+        #title="ngModel"
+      />
+      <mat-error *ngIf="title.invalid">Please enter a post title</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="4"
+        name="content"
+        ngModel
+        required
+        minlength="3"
+        #content="ngModel"
+      >
+      </textarea>
+      <mat-error *ngIf="content.invalid">Please enter a post content</mat-error>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" type="submit">Save Post</button>
+    </div>
+  </form>
 </mat-card>
