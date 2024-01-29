@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-post-create',
@@ -6,7 +6,14 @@ import { Component } from '@angular/core';
   styleUrl: './post-create.components.css',
 })
 export class PostCreateComponent {
+  enteredValue = 'No Content';
+  newPost = 'No Content';
+
+  // onAddPost(postInput: HTMLTextAreaElement) {
+  //   this.newPost = postInput.value;
+  // }
   onAddPost() {
-    alert('Post added!');
+    console.log(this.enteredValue);
+    this.newPost = this.enteredValue;
   }
 }
