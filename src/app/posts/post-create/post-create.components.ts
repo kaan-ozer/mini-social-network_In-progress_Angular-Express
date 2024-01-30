@@ -36,5 +36,7 @@ export class PostCreateComponent {
     // alert(post.title);
 
     // this.postCreated.emit(post);
+
+    form.resetForm();
   }
 }
