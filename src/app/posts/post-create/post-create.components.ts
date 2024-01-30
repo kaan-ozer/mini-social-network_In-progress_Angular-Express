@@ -14,28 +14,45 @@ export class PostCreateComponent {
   enteredContent = 'No Content';
   newPost = 'No Content';
 
-  // onAddPost(postInput: HTMLTextAreaElement) {
-  //   this.newPost = postInput.value;
-  // }
+  /*
 
-  // @Output() postCreated = new EventEmitter<Post>();
+    Another way of giving data to parent component by using event emitter. 
 
+    @Output() postCreated = new EventEmitter<Post>();
+    
+  
+    Getting form data by using local reference
+
+    onAddPost(postInput: HTMLTextAreaElement) {
+        this.newPost = postInput.value;
+    }
+
+  */
+
+  // Service is injected
   constructor(public postsService: PostsService) {}
 
+  //check if form is valid
   onAddPost(form: NgForm) {
     if (form.invalid) {
       return;
     }
 
+    /*
+      Create a post with data comes from form by using local reference
+
+      const post: Post = {
+        title: form.value.title,
+        content: form.value.content,
+      };
+      alert(post.title);
+
+      // emit created post to be make this post accessible from parent component
+      this.postCreated.emit(post);
+
+    */
+
     this.postsService.addPost(form.value.title, form.value.content);
-
-    // const post: Post = {
-    //   title: form.value.title,
-    //   content: form.value.content,
-    // };
-    // alert(post.title);
-
-    // this.postCreated.emit(post);
 
     form.resetForm();
   }
